@@ -1402,7 +1402,14 @@ import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-ap
 import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged,updateProfile,GoogleAuthProvider,signInWithPopup,linkWithCredential}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import{getDatabase,ref,onValue,set,push,update,get}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-const FB={apiKey:"AIzaSyCbc_Uy4wCYnHWchzK7WwKp47vA72dpG4A",authDomain:"afrika-yeelen.firebaseapp.com",projectId:"afrika-yeelen",storageBucket:"afrika-yeelen.firebasestorage.app",messagingSenderId:"1076807847652",appId:"1:1076807847652:web:48e2a8b622490d2b44e6f1",databaseURL:"https://afrika-yeelen-default-rtdb.firebaseio.com"};
+/* authDomain : on utilise le domaine du site (afrikayeelen.com) au lieu de
+   afrika-yeelen.firebaseapp.com. Le popup Google s'ouvre ainsi sur le même
+   domaine que le site, ce qui évite l'erreur "missing initial state"
+   (sessionStorage partitionné entre deux domaines). Nécessite :
+   - afrikayeelen.com dans Authentication > Paramètres > Domaines autorisés
+   - https://afrikayeelen.com/__/auth/handler dans les URI de redirection du client OAuth
+   - que /__/auth/ soit servi par Firebase (Firebase Hosting, ou proxy vers afrika-yeelen.firebaseapp.com) */
+const FB={apiKey:"AIzaSyCbc_Uy4wCYnHWchzK7WwKp47vA72dpG4A",authDomain:"afrikayeelen.com",projectId:"afrika-yeelen",storageBucket:"afrika-yeelen.firebasestorage.app",messagingSenderId:"1076807847652",appId:"1:1076807847652:web:48e2a8b622490d2b44e6f1",databaseURL:"https://afrika-yeelen-default-rtdb.firebaseio.com"};
 const app=initializeApp(FB);
 
 /* ══════════════════════════════════════════════════════════════════
